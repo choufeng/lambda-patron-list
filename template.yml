@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Transform:
+- AWS::Serverless-2016-10-31
+
+Resources:
+  Login:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: index.handler
+      Runtime: nodejs8.10
+      Layers:
+        - arn:aws:lambda:ap-southeast-1:732043271754:layer:HWT-Layers:13
+      Events:
+        GetEvent:
+          Type: Api
+          Properties:
+            Path: /patrons
+            Method: get
